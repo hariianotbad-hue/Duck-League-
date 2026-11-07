@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DUK LEAGUE | Official HQ</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --gold: #ffd447;
+    --gold2: #ffb800;
+    --bg: #08090b;
+    --panel: #111318;
+    --text: #f5f5f5;
+    --muted: #92949d;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: Inter, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+header {
+    height: 75px;
+    padding: 0 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #24252a;
+    background: #08090bed;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.logo {
+    font-family: Orbitron, sans-serif;
+    font-weight: 900;
+    color: var(--gold);
+    font-size: 23px;
+    letter-spacing: 2px;
+}
+
+nav a {
+    color: #aaa;
+    text-decoration: none;
+    margin-left: 25px;
+    font-size: 13px;
+    font-weight: 700;
+    transition: .2s;
+}
+
+nav a:hover {
+    color: var(--gold);
+}
+
+.hero {
+    min-height: 520px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 50px 20px;
+    background:
+        radial-gradient(ellipse at center, #30250755, transparent 65%),
+        linear-gradient(180deg, #0c0d10, #08090b);
+}
+
+.tag {
+    border: 1px solid #5c4a16;
+    background: #221b08;
+    color: var(--gold);
+    padding: 9px 18px;
+    border-radius: 30px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    font-weight: 800;
+    margin-bottom: 25px;
+}
+
+.hero h1 {
+    font-family: Orbitron, sans-serif;
+    font-size: clamp(45px, 8vw, 90px);
+    font-weight: 900;
+    letter-spacing: -3px;
+    line-height: 1.1;
+}
+
+.hero h1 span {
+    color: var(--gold);
+}
+
+.hero p {
+    color: var(--muted);
+    max-width: 500px;
+    line-height: 1.8;
+    margin: 25px 0;
+}
+
+.btn {
+    padding: 15px 30px;
+    background: var(--gold);
+    color: #111;
+    border: none;
+    border-radius: 8px;
+    font-weight: 900;
+    font-family: Orbitron, sans-serif;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.btn:hover {
+    background: var(--gold2);
+    transform: translateY(-2px);
+}
+
+section {
+    padding: 75px 8%;
+}
+
+.section-title {
+    font-family: Orbitron, sans-serif;
+    font-size: 30px;
+    margin-bottom: 12px;
+}
+
+.section-title span {
+    color: var(--gold);
+}
+
+.subtitle {
+    color: var(--muted);
+    margin-bottom: 35px;
+    line-height: 1.7;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: var(--panel);
+    border: 1px solid #26272c;
+    padding: 30px;
+    border-radius: 14px;
+    transition: .2s;
+}
+
+.card:hover {
+    border-color: #80651b;
+    transform: translateY(-4px);
+}
+
+.card h3 {
+    color: var(--gold);
+    font-family: Orbitron, sans-serif;
+    font-size: 17px;
+    margin-bottom: 12px;
+}
+
+.card p {
+    color: var(--muted);
+    line-height: 1.7;
+    font-size: 13px;
+}
+
+.roster-box {
+    background: var(--panel);
+    border: 1px solid #28292e;
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.roster-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px;
+    border-bottom: 1px solid #28292e;
+}
+
+.roster-header h3 {
+    font-family: Orbitron, sans-serif;
+    color: var(--gold);
+}
+
+.member-count {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.member {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 22px;
+    border-bottom: 1px solid #202126;
+}
+
+.member:last-child {
+    border-bottom: none;
+}
+
+.member-name {
+    font-weight: 700;
+}
+
+.rank {
+    color: var(--gold);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.empty {
+    padding: 40px;
+    text-align: center;
+    color: var(--muted);
+}
+
+footer {
+    padding: 35px 8%;
+    text-align: center;
+    color: #666;
+    border-top: 1px solid #24252a;
+    font-size: 12px;
+}
+
+footer span {
+    color: var(--gold);
+}
+
+/* JOIN MODAL */
+
+.modal {
+    position: fixed;
+    inset: 0;
+    background: #000c;
+    backdrop-filter: blur(8px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    padding: 15px;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal-content {
+    background: #111318;
+    border: 1px solid #574718;
+    width: 100%;
+    max-width: 600px;
+    max-height: 85vh;
+    overflow-y: auto;
+    border-radius: 16px;
+    padding: 25px;
+}
+
+.modal-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.modal-top h2 {
+    font-family: Orbitron, sans-serif;
+    color: var(--gold);
+    font-size: 20px;
+}
+
+.close {
+    color: #aaa;
+    background: none;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.name-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.name-option {
+    padding: 15px;
+    background: #1b1d23;
+    color: white;
+    border: 1px solid #303138;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: left;
+    font-weight: 700;
+    transition: .2s;
+}
+
+.name-option:hover:not(:disabled) {
+    border-color: var(--gold);
+    color: var(--gold);
+}
+
+.name-option:disabled {
+    opacity: .35;
+    cursor: not-allowed;
+    text-decoration: line-through;
+}
+
+.status {
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 20px;
+    line-height: 1.6;
+}
+
+#message {
+    margin-top: 15px;
+    color: var(--gold);
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+@media(max-width: 650px) {
+    header {
+        padding: 0 5%;
+    }
+
+    nav a {
+        margin-left: 10px;
+        font-size: 11px;
+    }
+
+    .logo {
+        font-size: 17px;
+    }
+
+    section {
+        padding: 55px 5%;
+    }
+
+    .name-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">DUK LEAGUE</div>
+
+    <nav>
+        <a href="#home">HOME</a>
+        <a href="#ranks">RANKS</a>
+        <a href="#roster">ROSTER</a>
+    </nav>
+</header>
+
+<section class="hero" id="home">
+    <div class="tag">OFFICIAL DUCK ESPORTS COMMUNITY</div>
+
+    <h1>WELCOME TO<br><span>DUK LEAGUE</span></h1>
+
+    <p>
+        A community built on skill, chaos, teamwork and ducks.
+        Join the league. Make your name legendary.
+    </p>
+
+    <button class="btn" onclick="openJoin()">JOIN THE LEAGUE</button>
+</section>
+
+<section id="ranks">
+    <h2 class="section-title">THE <span>RANKS</span></h2>
+
+    <p class="subtitle">
+        Every duck has a place. Earn your position in the league.
+    </p>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>FOUNDER</h3>
+            <p>The creator and supreme leader of DUK LEAGUE.</p>
+        </div>
+
+        <div class="card">
+            <h3>ELITE</h3>
+            <p>Trusted members who help lead the community.</p>
+        </div>
+
+        <div class="card">
+            <h3>MEMBER</h3>
+            <p>Official members of the DUK LEAGUE community.</p>
+        </div>
+
+        <div class="card">
+            <h3>RECRUIT</h3>
+            <p>New ducks entering the battlefield.</p>
+        </div>
+
+    </div>
+</section>
+
+<section id="roster">
+    <h2 class="section-title">THE <span>ROSTER</span></h2>
+
+    <p class="subtitle">
+        Meet the members of DUK LEAGUE.
+        This roster is shared across visitors.
+    </p>
+
+    <div class="roster-box">
+
+        <div class="roster-header">
+            <h3>MEMBERS</h3>
+            <span class="member-count" id="memberCount">Loading...</span>
+        </div>
+
+        <div id="rosterList">
+            <div class="empty">Connecting to the database...</div>
+        </div>
+
+    </div>
+</section>
+
+<footer>
+    © 2026 <span>DUK LEAGUE</span> — ALL DUCKS RESERVED.
+</footer>
+
+<!-- JOIN MODAL -->
+
+<div class="modal" id="joinModal">
+
+    <div class="modal-content">
+
+        <div class="modal-top">
+            <h2>SELECT YOUR DUCK</h2>
+            <button class="close" onclick="closeJoin()">×</button>
+        </div>
+
+        <p class="subtitle">
+            Choose your identity. Once selected, the name is taken.
+        </p>
+
+        <div class="name-grid" id="nameGrid"></div>
+
+        <div id="message"></div>
+
+        <p class="status">
+            Names are shared through the DUK LEAGUE cloud database.
+        </p>
+
+    </div>
+
+</div>
+
+<!-- FIREBASE DATABASE -->
+
+<script type="module">
+
+import { initializeApp } from
+"https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+    getFirestore,
+    collection,
+    onSnapshot,
+    doc,
+    runTransaction,
+    serverTimestamp
+} from
+"https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+import {
+    getAuth,
+    signInAnonymously
+} from
+"https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+
+/* ======================================
+   REPLACE THIS WITH YOUR FIREBASE CONFIG
+====================================== */
+
+const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_PROJECT.firebaseapp.com",
+    projectId: "YOUR_PROJECT_ID",
+    storageBucket: "YOUR_PROJECT.appspot.com",
+    messagingSenderId: "YOUR_SENDER_ID",
+    appId: "YOUR_APP_ID"
+};
+
+
+/* ======================================
+   INITIALIZE FIREBASE
+====================================== */
+
+const app = initializeApp(firebaseConfig);
+
+const db = getFirestore(app);
+
+const auth = getAuth(app);
+
+const membersCollection = collection(db, "members");
+
+
+/* ======================================
+   AVAILABLE DUCK NAMES
+====================================== */
+
+const duckNames = [
+    "Mr.Weak",
+    "Mr.Strong",
+    "Mr.Sussy",
+    "Mr.Noob",
+    "Mr.Duck",
+    "Mr.Froggy",
+    "Mr.Beast",
+    "Mr.Chicken",
+    "Mr.Unknown",
+    "Mr.Legend",
+    "Mr.Cooked",
+    "Mr.Pro",
+    "Mr.Sigma",
+    "Mr.Banana",
+    "Mr.Goofy",
+    "Mr.Chaos",
+    "Mr.Nobody",
+    "Mr.Rizz",
+    "Mr.Skibidi",
+    "Mr.God",
+    "Mr.Quack",
+    "Mr.Epic",
+    "Mr.Bot",
+    "Mr
